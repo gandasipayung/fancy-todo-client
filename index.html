@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- CSS Local -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <!-- CSS Toastify -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+    <!--Fontawesome CDN-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    
+    <!-- Google Sign In -->
+    <meta name="google-signin-client_id" content="37526365562-it5lf9jupr7o0hhbqjfl6eftk0hv5567.apps.googleusercontent.com">
+    <title>Fancy Todo</title>
+  </head>
+  <body>
+    <section id="landingPage">
+      <!-- Login-->
+    <div class="wrapper fadeInDown">
+      <div id="formContent">
+        <!-- Tabs Titles -->
+        <!-- Icon -->
+        <div class="fadeIn first pt-5">
+          <span><i class="fas fa-user fa-3x"></i></span>
+          <h5>Sign In</h5>
+        </div>
+        <div class="container my-3">
+          <form id="signIn">
+            <input type="email" id="email-login" class="fadeIn second" name="email" placeholder="email" required>
+            <input type="password" id="password-login" class="fadeIn third" name="login" placeholder="password" required>
+            <input type="submit" class="fadeIn fourth" value="Sign In">
+          </form>
+          <span>Or Login With</span>
+          <div class="g-signin2" data-onsuccess="onSignIn"></div>
+        </div>
+        <!-- Login Form -->
+        <div id="formFooter">
+          <small>Don't Have any accout ? Sign Up Here</small><br>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#registerModal">
+            Sign Up
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal register-->
+      <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header text-center">
+              <h5 class="modal-title" id="registerModalLabel">Sign Up</h5>
+            </div>
+            <div class="modal-body text-center">
+              <form id="signUp">
+                <input type="text" id="username-register" class="fadeIn first" name="login" placeholder="username" required>
+                <input type="email" id="email-register" class="fadeIn second" name="login" placeholder="email" required>
+                <input type="password" id="password-register" class="fadeIn third" name="login" placeholder="password" required>
+                <input type="submit" class="fadeIn fourth" value="Sign Up">
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- navbar -->
+    <section id="Navbar">
+      <nav class="navbar navbar-expand-sm navbar-dark bg-transparent">
+        <a class="navbar-brand" href="">Fancy-Todo</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav row ml-auto text-light">
+            <div id="currentUser"></div>
+            <div class="col" id="SignOut" style="cursor: pointer;">Logout</div>
+          </div>
+        </div>
+      </nav>
+    </section>
+    <!-- data -->
+    <section id="contentPage">
+      <div class="container" style="max-width: 95%;">
+        <div class="row" style="padding-top: 1rem;">
+          <div class="col-md-4">
+            <div id="accordion">
+              <div class="card">
+                <div class="card-header bg-white" id="headingOne">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                      Add Todo
+                    </button>
+                  </h5>
+                </div>
+            
+                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                  <div class="card-body px-0 py-0 my-2">
+                    <form class="text-center" id="add-todo">
+                      <div class="form-group">
+                        <input type="text" class="form-control" id="title" placeholder="Todo Title">
+                      </div>
+                      <div class="form-group">
+                        <input type="text" class="form-control" id="description" placeholder="description">
+                      </div>
+                      <div class="form-group">
+                        <input type="date" class="form-control" id="due_date" placeholder="date">
+                      </div>
+                      <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header bg-white" id="headingTwo">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                      Today's Weather
+                    </button>
+                  </h5>
+                </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                  <div class="card-body py-0 my-2">
+                    <div class="row text-center align-item-center">
+                      <form class="text-center w-100" id="weather">
+                        <div class="form-group">
+                          <input type="text" class="form-control" id="city" placeholder="Your City">
+                        </div>
+                        <button type="submit" class="btn btn-primary mb-2">Check</button>
+                      </form>
+                    </div>
+                    <div class="row" id="weathers">
+                      <table class="table table-hover table-responsive-md">
+                        <thead>
+                          <tr>
+                            <th scope="col">Title</th>
+                            <th scope="col">Description</th>
+                          </tr>
+                        </thead>
+                        <tbody id="weather-detail">
+                          <!-- isi data -->
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="text-center" style="min-height: 100vh; max-height: 100vh;">
+              <!-- Todo List -->
+              <div class="card">
+                <h2 class="mt-2">My Todo List</h2>
+                <table class="table table-hover table-responsive-md">
+                  <thead>
+                    <tr>
+                      <th scope="col">No.</th>
+                      <th scope="col">Title</th>
+                      <th scope="col">Description</th>
+                      <th scope="col">Due Date</th>
+                      <th scope="col">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="content-todo">
+                    <!-- isi data -->
+                  </tbody>
+                </table>
+              </div>
+              <!-- Done List -->
+              <div class="card my-2">
+                <h2 class="mt-2">Done List</h2>
+                <table class="table table-hover table-responsive-md">
+                  <thead>
+                    <tr>
+                      <th scope="col">No.</th>
+                      <th scope="col">Title</th>
+                      <th scope="col">Description</th>
+                      <th scope="col">Due Date</th>
+                      <th scope="col">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="content-done">
+                    <!-- isi data -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Form Edit -->
+    <section id="formEdit" class="mt-5" style="min-height: 100vh;">
+      <div class="container">
+        <!-- <center> -->
+          
+        <!-- </center>   -->
+        <div class="card">
+          <h2 class="mt-2"> Update Todo</h2>
+          <form class="text-center" id="update-todo">
+            <div class="form-group">
+              <input type="text" class="form-control" id="title-update" value="">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" id="description-update" value="">
+            </div>
+            <div class="form-group">
+              <input type="date" class="form-control" id="due_date-update" value="">
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">Update</button>
+          </form>
+          <div class="card-body text-center">
+            <button class="btn btn-danger mb-2" id="cancel">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="bg-transparent text-center text-white">
+      <span>Ganda Sipayung &copy 2020</span>
+    </footer>
+    <!-- Optional JavaScript -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="./assets/js/main.js"></script>
+    <!-- Toastify cdn -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>
